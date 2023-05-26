@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<br>
+<div class="row">
+  <div class="col-md-10">
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+    <a href="{% url 'new_client' %}" class="btn btn-success col-md-2">Add new client</a>
+</div>
+<br>
+<div class="row">
+    <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First name</th>
+      <th scope="col">Last name</th>
+      <th scope="col">Email</th>
+        <th scope="col">Operations</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for client in clients %}
+        <tr>
+          <th scope="row">{{ client.id_client }}</th>
+          <td>{{ client.name_client }}</td>
+          <td>{{ client.last_name_client }}</td>
+          <td>{{ client.email_client }}</td>
+            <td><a href="#" class="btn btn-primary">Edit</a> <span></span> <a href="#" class="btn btn-danger">Delete</a> </td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<br>
+
+<div class="row">
+    {% for module in modules %}
+        <div class="col-md-auto">
+            <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+              <div class="card-header text-center">{{ module.title_module }}</div>
+              <div class="card-body">
+                <p class="card-text">{{ module.description_module }}</p>
+                  <div class="col text-center">
+                      {% if module.title_module == 'PRODUCTS' %}
+                        <a href="{% url 'all_products' %}" class="btn btn-outline-dark">Go to {{ module.title_module }}</a>
+                      {% elif module.title_module == 'SUPPLIERS' %}
+                        <a href="{% url 'all_suppliers' %}" class="btn btn-outline-dark">Go to {{ module.title_module }}</a>
+                      {% elif module.title_module == 'CLIENTS' %}
+                        <a href="{% url 'all_clients' %}" class="btn btn-outline-dark">Go to {{ module.title_module }}</a>
+                      {% else %}
+                        <a href="{% url 'home' %}" class="btn btn-outline-dark">Go to {{ module.title_module }}</a>
+                      {% endif %}
+                  </div>
+              </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
